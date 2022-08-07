@@ -7,13 +7,13 @@ import { Transition } from '@headlessui/react';
 import { toggleCharacter } from '../app/app-slice';
 import { Adventure, Character } from '../app/types';
 import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../app/store';
 
 // Icons
 import filter from '../assets/icons/Magic filter.svg';
 import downArrow from '../assets/icons/Down arrow.svg';
 import upArrow from '../assets/icons/Up arrow.svg';
 import placeholder from '../assets/placeholder.png';
-import { RootState } from '../app/store';
 
 function DropDown(props: { characters: Array<Character> }) {
   const [active, setActive] = useState(false);

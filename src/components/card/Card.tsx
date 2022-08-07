@@ -1,6 +1,10 @@
-import placeholder from '../../assets/placeholder.png';
-import { Adventure } from '../../app/app-slice';
+import { Adventure } from '../../app/types';
+
+// Components
 import Decorator from './Decorator';
+
+// Assets
+import placeholder from '../../assets/placeholder.png';
 
 function Card(props: Adventure): JSX.Element {
   return (

@@ -36,7 +36,7 @@ function App(): JSX.Element {
       dispatch(setCharacters(docs));
       dispatch(setSelected(docs[0]));
     } catch (error) {
-      console.log(error);
+      console.log('An error ocurred', error);
     }
   };
 

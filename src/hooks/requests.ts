@@ -1,14 +1,13 @@
 const api: string = 'https://the-one-api.dev/v2';
-// const api2: string = 'https://jsonplaceholder.typicode.com/comments';
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 async function httpGetCharacters() {
   try {
     const response = await fetch(`${api}/character`, {
       headers: {
-        Authorization: 'Bearer pwcX8ZajN7Fc0p7GmRkG',
+        Authorization: `Bearer ${API_KEY}`,
       },
     });
-    // const response = await fetch(api2);
     return await response.json();
   } catch (error) {
     console.log(error);

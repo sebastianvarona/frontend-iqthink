@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+
+// Redux
 import type { RootState } from '../app/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { setActive } from '../app/menu-slice';
@@ -11,12 +13,12 @@ import chat from '../assets/icons/Chat.svg';
 import logout from '../assets/icons/Logout.svg';
 import star from '../assets/icons/Star.svg';
 
-function Sidebar(): JSX.Element {
-  type MenuElement = {
-    name: string;
-    icon: string;
-  };
+type MenuElement = {
+  name: string;
+  icon: string;
+};
 
+function Sidebar(): JSX.Element {
   const menu: MenuElement[] = [
     {
       name: 'dashboard',

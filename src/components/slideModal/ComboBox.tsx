@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 
 // Icons
 import downArrow from '../../assets/icons/Down arrow.svg';
@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../app/store';
 import { setQuery, setSelected } from '../../app/modal-slice';
 
-function ComboBox() {
+function ComboBox(): JSX.Element {
   const characters = useSelector((state: RootState) => state.modal.characters);
   const selected = useSelector((state: RootState) => state.modal.selected);
   const query = useSelector((state: RootState) => state.modal.query);
@@ -49,12 +49,12 @@ function ComboBox() {
           afterLeave={() => setQuery('')}
         >
           <Combobox.Options className="scrollable absolute mt-4 left-0 max-h-60 w-full overflow-auto rounded-md bg-gray-10 py-3 px-5 bg-gray-100 shadow-md text-sm">
-            {filteredCharacters.length === 0 && query !== '' ? (
+            {filteredCharacters?.length === 0 && query !== '' ? (
               <div className="relative cursor-default select-none py-2 px-4">
                 Nothing found.
               </div>
             ) : (
-              filteredCharacters.map((character: Character) => (
+              filteredCharacters?.map((character: Character) => (
                 <Combobox.Option
                   key={character._id}
                   className={({ active }) =>
