@@ -48,10 +48,10 @@ function Sidebar(): JSX.Element {
   return (
     <section className="px-6 py-12 h-screen min-w-fit">
       <div className="h-full bg-background-light rounded-2xl px-6 py-6 box-border flex flex-col">
-        <h1 className="flex gap-3 text-xl font-semibold leading-5 text-purple-900 items-center">
+        <h1 className="flex gap-3 text-xl font-semibold leading-5 text-primary items-center">
           {/* Magic Hat Logo */}
           <svg
-            className="fill-purple-900 h-12"
+            className="fill-primary h-12"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
