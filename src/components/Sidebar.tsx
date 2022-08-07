@@ -1,8 +1,15 @@
-import dashboard from '../../assets/icons/Dashboard.svg';
-import calendar from '../../assets/icons/Calendar.svg';
-import characters from '../../assets/icons/Characters.svg';
-import chat from '../../assets/icons/Chat.svg';
-import logout from '../../assets/icons/Logout.svg';
+import { useEffect } from 'react';
+import type { RootState } from '../app/store';
+import { useSelector, useDispatch } from 'react-redux';
+import { setActive } from '../app/menu-slice';
+
+// Icons
+import dashboard from '../assets/icons/Dashboard.svg';
+import calendar from '../assets/icons/Calendar.svg';
+import characters from '../assets/icons/Characters.svg';
+import chat from '../assets/icons/Chat.svg';
+import logout from '../assets/icons/Logout.svg';
+import star from '../assets/icons/Star.svg';
 
 function Sidebar(): JSX.Element {
   type MenuElement = {
@@ -29,10 +36,17 @@ function Sidebar(): JSX.Element {
     },
   ];
 
+  const active = useSelector((state: RootState) => state.menu.active);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setActive(menu[0].name));
+  }, []);
+
   return (
-    <section className="p-6 h-screen">
-      <div className="h-full bg-white rounded-2xl px-6 py-6 box-border flex flex-col">
-        <h1 className="flex gap-3 text-2xl font-semibold leading-6 text-purple-900 items-center">
+    <section className="px-6 py-12 h-screen min-w-fit">
+      <div className="h-full bg-background-light rounded-2xl px-6 py-6 box-border flex flex-col">
+        <h1 className="flex gap-3 text-xl font-semibold leading-5 text-purple-900 items-center">
           {/* Magic Hat Logo */}
           <svg
             className="fill-purple-900 h-12"
@@ -43,19 +57,35 @@ function Sidebar(): JSX.Element {
           </svg>{' '}
           Gandalf's <br /> Book
         </h1>
-        <ul className="flex flex-col h-full mt-10 mb-3">
+        <ul className="flex flex-col h-full mt-10 mb-3 w-44">
           {menu.map((item, index) => (
             <li
               key={index}
-              className="flex gap-3 py-2 my-2 opacity-40 hover:opacity-100 transition cursor-pointer"
+              onClick={(): void => {
+                dispatch(setActive(item.name));
+              }}
+              className={`flex gap-2 items-center py-2 my-2 hover:opacity-100 transition cursor-pointer ${
+                active === item.name
+                  ? 'opacity-100 font-semibold'
+                  : 'opacity-40 font-medium'
+              }`}
             >
               <img src={item.icon} alt={item.name} className="h-6" />
               <a href="#" className="capitalize font-semibold">
                 {item.name}
               </a>
+              <img
+                src={star}
+                alt="active"
+                className={`ml-auto h-3 transition-transform duration-500 ${
+                  active === item.name
+                    ? 'rotate-[145deg] opacity-100'
+                    : 'opacity-0'
+                }`}
+              />
             </li>
           ))}
-          <li className="flex gap-3 py-2 mt-auto opacity-40 hover:opacity-70 transition cursor-pointer">
+          <li className="flex gap-2 py-2 mt-auto opacity-40 hover:opacity-70 transition cursor-pointer">
             <a href="#" className="capitalize font-semibold">
               Logout
             </a>

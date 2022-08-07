@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface CounterState {
+export interface MenuState {
   active: string;
 }
 
-const initialState: CounterState = {
+const initialState: MenuState = {
   active: '',
 };
 
