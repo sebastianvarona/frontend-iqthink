@@ -67,20 +67,13 @@ function App(): JSX.Element {
           </div>
         </div>
         <div className="flex flex-col gap-5">
-          {adventures.map((adventure: Adventure) => {
-            if (charactersFilter.length <= 0) {
-              return (
-                <Card
-                  title={adventure.title}
-                  character={adventure.character}
-                  cId={adventure.cId}
-                  race={adventure.race}
-                  origin={adventure.origin}
-                  destination={adventure.destination}
-                />
-              );
-            } else {
-              if (charactersFilter.includes(adventure.cId)) {
+          {adventures.length <= 0 ? (
+            <div className="text-center font-medium text-xl mt-4 text-grayscale-30">
+              No adventures yet...
+            </div>
+          ) : (
+            adventures.map((adventure: Adventure) => {
+              if (charactersFilter.length <= 0) {
                 return (
                   <Card
                     title={adventure.title}
@@ -91,9 +84,22 @@ function App(): JSX.Element {
                     destination={adventure.destination}
                   />
                 );
+              } else {
+                if (charactersFilter.includes(adventure.cId)) {
+                  return (
+                    <Card
+                      title={adventure.title}
+                      character={adventure.character}
+                      cId={adventure.cId}
+                      race={adventure.race}
+                      origin={adventure.origin}
+                      destination={adventure.destination}
+                    />
+                  );
+                }
               }
-            }
-          })}
+            })
+          )}
         </div>
       </div>
     </div>
