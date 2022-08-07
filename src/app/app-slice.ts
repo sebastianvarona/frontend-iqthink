@@ -2,8 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Adventure, Character } from './types';
 
 export interface AppState {
-  adventures: Array<Adventure>;
-  charactersFilter: Array<string>;
+  adventures: Adventure[];
+  charactersFilter: string[];
 }
 
 const initialState: AppState = {

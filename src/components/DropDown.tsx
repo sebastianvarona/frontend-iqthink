@@ -15,7 +15,7 @@ import downArrow from '../assets/icons/Down arrow.svg';
 import upArrow from '../assets/icons/Up arrow.svg';
 import placeholder from '../assets/placeholder.png';
 
-function DropDown(props: { characters: Array<Character> }) {
+function DropDown(props: { characters: Character[] }) {
   const [active, setActive] = useState(false);
   const adventures = useSelector((state: RootState) => state.app.adventures);
   const characters = adventures.map((adventure: Adventure) => {
