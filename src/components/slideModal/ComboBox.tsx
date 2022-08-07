@@ -19,7 +19,7 @@ function ComboBox(): JSX.Element {
 
   const dispatch = useDispatch();
 
-  const filteredCharacters: Array<Character> =
+  const filteredCharacters: Character[] =
     query === ''
       ? characters
       : characters.filter((character: Character) =>
@@ -29,7 +29,10 @@ function ComboBox(): JSX.Element {
             .includes(query.toLowerCase().replace(/\s+/g, ''))
         );
   return (
-    <Combobox value={selected} onChange={setSelected}>
+    <Combobox
+      value={selected}
+      onChange={(character: Character) => dispatch(setSelected(character))}
+    >
       <div className="relative mt-1 ">
         <div className="relative w-full cursor-default overflow-hidden">
           <Combobox.Input
