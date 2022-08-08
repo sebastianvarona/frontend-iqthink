@@ -1,4 +1,5 @@
 # FrontEnd Test IQTHINK
+![image](https://user-images.githubusercontent.com/77818407/183471931-71fb4b0f-a0ae-432c-96fa-fecac3d27120.png)
 
 ## Como iniciar la aplicacion:
 
